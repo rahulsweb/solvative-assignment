@@ -2,7 +2,7 @@
 <div>
     <div class="container">
     <div class="search-box m-2">
-        <input type="text" placeholder="Search" >
+        <input id="search" type="text" placeholder="Search" >
         <button  @click="callApiInput" type="submit">Search</button>
     </div>
     <table class="table">
@@ -28,7 +28,7 @@
 <button @click="nextPage">Next</button>
 </p>
     <div class="user-input">
-        <input type="number" min="5" max="10" v-model="limit" @input="callApi">
+        <input type="number" min="5" max="10" v-model="limit" @input="callApiInput">
         <label for="user-input">Number of cities to show</label>
     </div>
    </div>
