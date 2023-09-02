@@ -9,7 +9,7 @@
         <div v-if="show" class="custom-loader">
         </div>
         <div v-else>
-            <div class="search-box m-2">
+            <div class="search-box ">
                 <input id="search" type="text" :placeholder="'Start searching...'" v-model="searchQuery">
                 <button @click="callApiSearch" type="submit">Search</button>
             </div>
@@ -41,11 +41,10 @@
 
             </div>
 
-            <div v-if="itemSort.length">
+            <div class="float-left"  v-if="itemSort.length">
                 <button class="m-2 " @click="prevPage">Previous</button>
                 <button class="m-2 " @click="nextPage">Next</button>
-            </div>
-            <div class="user-input m-2">
+            
                 <label for="number">Number of cities to show
                     <input id="number" type="number" min="1" max="10" v-model="limit" @input="callApiInput">
 
@@ -165,4 +164,10 @@ export default {
 
 <style>
 @import '@/assets/css/users.css';
+.search-box {
+    float:left;
+    margin-left:30px;
+    margin-bottom:10px;
+}
+
 </style>
