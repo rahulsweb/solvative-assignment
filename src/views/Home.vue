@@ -3,14 +3,14 @@
     <div class="container">
     <div class="search-box">
         <input type="text" placeholder="Search" >
-        <button  @click="callApiButton" type="submit">Search</button>
+        <button  @click="callApi" type="submit">Search</button>
     </div>
     <table class="table">
         <thead>
             <tr>
                  <th>#</th>
-                <th>Place Name</th>
-                <th>Country</th>
+                <th>City</th>
+                <th>Population</th>
             </tr>
         </thead>
         <tbody>
@@ -47,7 +47,7 @@ export default {
         return {
             
   res:[],
-    pageSize:5,
+    pageSize:3,
   currentPage:1,
         };
     },
@@ -87,9 +87,6 @@ var options = {
 });
 this.res=data1;
 },
-callApiButton(){
-
-}
 nextPage:function() {
   if((this.currentPage * this.pageSize) < this.res.length) this.currentPage++;
 },
