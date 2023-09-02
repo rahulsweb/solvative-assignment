@@ -7,7 +7,7 @@
         </div>
         <div v-else>
             <div class="search-box m-2">
-                <input id="search" type="text" placeholder="Search" v-model="searchQuery">
+                <input id="search" type="text" :placeholder="searchQuery ? 'Start searching...':'Search'" v-model="searchQuery">
                 <button @click="callApiSearch" type="submit">Search</button>
             </div>
             <table class="table" v-if="itemSort.length">
@@ -44,8 +44,8 @@
                 <input type="number" min="5" max="10" v-model="limit" @input="callApiInput">
                 <label for="user-input">Number of cities to show</label>
             </div>
-             <div v-if="limit < 5 || limit > 10 " class="error mt-2">Enter the number between 5 to 10 </div>
-             
+            <div v-if="limit < 5 || limit > 10 " class="error mt-2">Enter the number between 5 to 10 </div>
+
         </div>
 
     </div>
@@ -128,42 +128,40 @@ export default {
                 limit: this.limit
             };
             this.res = await callGetApi(url, param);
-            if(!this.res){
-                  this.error="Something went wrong....";
-                 location.reload();
+            if (!this.res) {
+                this.error = "Something went wrong....";
+                location.reload();
             }
-          
-            this.show=false;
+
+            this.show = false;
         },
 
         async callApiSearch() {
-   
+
             this.res.filter((row, index) => {
                 return row.city.includes(this.search)
             });
         },
         async callApiInput() {
-           
-             if(this.limit >= 5 && this.limit <= 10) 
-             {
-                 this.show = true;
-                  await this.callApi();
-             }
-           
-                    this.show=false;
 
-             
+            if (this.limit >= 5 && this.limit <= 10) {
+                this.show = true;
+                await this.callApi();
+            }
+
+            this.show = false;
+
         },
         nextPage: function () {
-            this.show=true;
+            this.show = true;
             if ((this.currentPage * this.pageSize) < this.res.length) this.currentPage++;
-             this.show=false;
+            this.show = false;
 
         },
         prevPage: function () {
-             this.show=true;
+            this.show = true;
             if (this.currentPage > 1) this.currentPage--;
-             this.show=false;
+            this.show = false;
         }
     }
 };
