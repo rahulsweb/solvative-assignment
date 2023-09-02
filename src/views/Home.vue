@@ -1,7 +1,10 @@
 <template>
 <div>
     <div class="container">
-        <div v-if="error" class="error">{{error}}</div>
+        <div v-if="error" class="error">
+            {{error}}
+            <button @click="redirectBack" type="submit">Back</button>
+        </div>
 
         <div v-if="show" class="custom-loader">
         </div>
@@ -24,7 +27,9 @@
                         <td>{{index+1}}</td>
                         <td>{{item.city}}</td>
 
-                        <td>{{item.country}}</td>
+                        <td class="flex">{{item.country}}<img :src="`https://flagsapi.com/${item.countryCode}/shiny/64.png`" width="20" class="ml-2">
+
+</td>
 
                     </tr>
 
@@ -42,7 +47,7 @@
             </div>
             <div class="user-input m-2">
                 <label for="number">Number of cities to show
-                                    <input  id="number" type="number" min="5" max="10" v-model="limit" @input="callApiInput">
+                    <input id="number" type="number" min="1" max="10" v-model="limit" @input="callApiInput">
 
                 </label>
             </div>
@@ -75,6 +80,7 @@ export default {
     },
 
     computed: {
+
         itemSort() {
             this.show = true;
             if (this.searchQuery) {
@@ -96,10 +102,13 @@ export default {
 
     mounted() {
         this.callApi();
-          this.pageSize=this.limit;
+        this.pageSize = this.limit;
     },
 
     methods: {
+        redirectBack() {
+            location.reload();
+        },
         flagCall(id) {
             // https://www.countryflags.io/:file_type/:country_code
         },
@@ -114,14 +123,16 @@ export default {
             this.res = await callGetApi(url, param);
             if (!this.res) {
                 this.error = "Something went wrong....";
-                location.reload();
+                this.show = false;
+
             }
 
             this.show = false;
         },
 
         async callApiSearch() {
-
+            if (!this.searchQuery)
+                return this.res;
             this.res.filter((row, index) => {
                 return row.city.includes(this.search)
             });
@@ -131,6 +142,7 @@ export default {
             if (this.limit >= 1 && this.limit <= 10) {
                 this.show = true;
                 await this.callApi();
+                this.show = false;
             }
 
             this.show = false;
