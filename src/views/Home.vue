@@ -28,7 +28,7 @@
 <button @click="nextPage">Next</button>
 </p>
     <div class="user-input">
-        <input type="number" min="5" max="10" value="5">
+        <input type="number" min="5" max="10" v-model="limit">
         <label for="user-input">Number of cities to show</label>
     </div>
    </div>
@@ -49,6 +49,7 @@ export default {
   res:[],
     pageSize:3,
   currentPage:1,
+  limit:5
         };
     },
     mounted(){
@@ -71,7 +72,7 @@ var data1=[];
 var options = {
   method: 'GET',
   url: 'https://wft-geo-db.p.rapidapi.com/v1/geo/cities',
-  params: {countryIds: 'IN', namePrefix: 'del', limit: '5'},
+  params: {countryIds: 'IN', namePrefix: 'del', limit: this.limit},
   headers: {
     'x-rapidapi-host': 'wft-geo-db.p.rapidapi.com',
     'x-rapidapi-key': '4ac5e3352fmshe6ac515ca3b8ccap1f0045jsnf0a504a87bbe'
