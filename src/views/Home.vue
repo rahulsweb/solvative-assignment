@@ -9,8 +9,8 @@
         <thead>
             <tr>
                  <th>#</th>
-                <th>City</th>
-                <th>Population</th>
+                <th>Place Name</th>
+                <th>Country</th>
             </tr>
         </thead>
         <tbody>
@@ -18,7 +18,7 @@
                  <td>{{index+1}}</td>
                 <td>{{item.city}}</td>
 
-                <td>{{item.population}}</td>
+                <td>{{item.country}}</td>
             </tr>
         
         </tbody>
