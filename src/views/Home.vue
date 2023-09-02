@@ -74,7 +74,7 @@ export default {
             res: [],
             pageSize: 3,
             currentPage: 1,
-            limit: 5,
+            limit: 3,
             searchQuery: ""
         };
     },
