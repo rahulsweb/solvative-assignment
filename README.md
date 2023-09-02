@@ -1,6 +1,7 @@
 # solvative-task
 ## Demo link
 https://rahul-solvative-task.netlify.app
+![image](https://github.com/rahulsweb/solvative-assignment/assets/43261847/8bd3b3b8-ff59-41ff-858d-20ecf0f5441f)
 
 ## Project setup
 ```
