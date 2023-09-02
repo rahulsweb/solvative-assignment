@@ -1,4 +1,6 @@
 # solvative-task
+## Demo link
+https://rahul-solvative-task.netlify.app
 
 ## Project setup
 ```
