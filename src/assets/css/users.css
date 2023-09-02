@@ -118,7 +118,7 @@
         border-radius:50%;
        
         position:absolute;
-        left:47%;
+        left:37%;
         top:37%;
         background:conic-gradient(#0000 10%,#766DF4);
         -webkit-mask:radial-gradient(farthest-side,#0000 calc(50%),#000 50);
