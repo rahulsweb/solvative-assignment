@@ -19,7 +19,8 @@
                  <td>{{index+1}}</td>
                 <td>{{item.city}}</td>
 
-                <td>{{item.country}}</td>
+                <td>{{item.country}}{{flagCall(item.id)}}</td>
+
             </tr>
         
         </tbody>
@@ -77,11 +78,15 @@ return this.res.filter((row, index) => {
 },
 
   methods:{
+    flagCall(id){
+        // https://www.countryflags.io/:file_type/:country_code
+    },
+
      async  callApi(api,data){
   
 var axios = require("axios").default;
 var data1=[];
-var options = {
+    let options = {
   method: 'GET',
   url: 'https://wft-geo-db.p.rapidapi.com/v1/geo/cities',
   params: {countryIds: 'IN', namePrefix: 'del', limit: this.limit},
@@ -91,14 +96,18 @@ var options = {
   }
 };
 
-  await axios.request(options).then(function (response) {
+
+this.res=await this.callGetApi(options);
+},
+async callGetApi(options){
+ let data1= await axios.request(options).then(function (response) {
     let data=response.data.data;
-      data1=data;
+     return  data;
 	// this.res=[...];
 }).catch(function (error) {
 	console.error(error);
 });
-this.res=data1;
+return data1;
 },
 async callApiInput(){
     await this.callApi();
