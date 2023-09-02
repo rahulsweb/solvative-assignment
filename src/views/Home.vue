@@ -3,7 +3,7 @@
     <div class="container">
     <div class="search-box m-2">
         <input type="text" placeholder="Search" >
-        <button  @click="callApi" type="submit">Search</button>
+        <button  @click="callApiInput" type="submit">Search</button>
     </div>
     <table class="table">
         <thead>
@@ -67,6 +67,7 @@ return this.res.filter((row, index) => {
 
   methods:{
      async  callApi(api,data){
+  
 var axios = require("axios").default;
 var data1=[];
 var options = {
@@ -87,6 +88,9 @@ var options = {
 	console.error(error);
 });
 this.res=data1;
+},
+async callApiInput(){
+    await this.callApi();
 },
 nextPage:function() {
   if((this.currentPage * this.pageSize) < this.res.length) this.currentPage++;
