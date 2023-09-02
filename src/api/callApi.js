@@ -13,7 +13,7 @@ export async function callGetApi(url,param){
     return await axios.request(options).then(function (response) {
     return response.data.data;
    }).catch(function (error) {
-    alert(error);
+    console.log(error);
     return false;
    });
 

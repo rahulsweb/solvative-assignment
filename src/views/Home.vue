@@ -7,7 +7,7 @@
         </div>
         <div v-else>
             <div class="search-box m-2">
-                <input id="search" type="text" :placeholder="searchQuery ? 'Start searching...':'Search'" v-model="searchQuery">
+                <input id="search" type="text" :placeholder="'Start searching...'" v-model="searchQuery">
                 <button @click="callApiSearch" type="submit">Search</button>
             </div>
             <table class="table" v-if="itemSort.length">
@@ -63,14 +63,7 @@ export default {
     data() {
         return {
             show: false,
-            thumbItem: ['box', 'text'],
             error: "",
-            cardItem: [
-                ['blank', 'circle:100', 'blank'],
-                ['title'],
-                ['text:3']
-            ],
-            option: {},
             res: [],
             pageSize: 3,
             currentPage: 1,
@@ -78,23 +71,7 @@ export default {
             searchQuery: ""
         };
     },
-    mounted() {
-        this.callApi();
-        this.option = {
-            radius: 3,
-            primaryColor: '#94bcff',
-            secondaryColor: '#c7dcff',
-            animate: true,
-            speed: '1.5s',
-            defaultSizes: {
-                box: 100,
-                circle: 100,
-                title: 25,
-                text: 15,
-            }
-        };
 
-    },
     computed: {
         itemSort() {
             this.show = true;
@@ -113,6 +90,10 @@ export default {
             });
         },
 
+    },
+
+    mounted() {
+        this.callApi();
     },
 
     methods: {
