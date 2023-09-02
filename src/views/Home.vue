@@ -2,8 +2,8 @@
 <div>
     <div class="container">
     <div class="search-box m-2">
-        <input id="search" type="text" placeholder="Search" >
-        <button  @click="callApiInput" type="submit">Search</button>
+        <input id="search" type="text" placeholder="Search"  v-model="searchQuery">
+        <button  @click="callApiSearch" type="submit">Search</button>
     </div>
     <table class="table" v-if="itemSort.length"> 
         <thead>
@@ -15,11 +15,11 @@
         </thead>
         
         <tbody>
-            <tr v-for=" (item,index) in itemSort" :key="index">
+            <tr v-for=" (item,index) in  itemSort" :key="index">
                  <td>{{index+1}}</td>
                 <td>{{item.city}}</td>
 
-                <td>{{item.country}}{{flagCall(item.id)}}</td>
+                <td>{{item.country}}</td>
 
             </tr>
         
@@ -61,7 +61,8 @@ export default {
   res:[],
     pageSize:3,
   currentPage:1,
-  limit:5
+  limit:5,
+  searchQuery:""
         };
     },
     mounted(){
@@ -69,12 +70,19 @@ export default {
     },
 computed:{
 itemSort(){
+     if(this.searchQuery){
+      return this.res.filter((item)=>{
+        return this.searchQuery.toLowerCase().split(' ').every(v => item.city.toLowerCase().includes(v) || item.country.toLowerCase().includes(v)) 
+
+      })
+      }
 return this.res.filter((row, index) => {
 		let start = (this.currentPage-1)*this.pageSize;
 		let end = this.currentPage*this.pageSize;
 		if(index >= start && index < end) return true;
 	});
-}
+},
+  
 },
 
   methods:{
@@ -108,6 +116,12 @@ async callGetApi(options){
 	console.error(error);
 });
 return data1;
+},
+async callApiSearch(){
+
+this.res.filter((row, index) => {
+		return row.city.includes(this.search) 
+	});
 },
 async callApiInput(){
     await this.callApi();
