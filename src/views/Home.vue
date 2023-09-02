@@ -5,7 +5,7 @@
         <input id="search" type="text" placeholder="Search" >
         <button  @click="callApiInput" type="submit">Search</button>
     </div>
-    <table class="table">
+    <table class="table" v-if="itemSort.length"> 
         <thead>
             <tr>
                  <th>#</th>
@@ -13,6 +13,7 @@
                 <th>Country</th>
             </tr>
         </thead>
+        
         <tbody>
             <tr v-for=" (item,index) in itemSort" :key="index">
                  <td>{{index+1}}</td>
@@ -23,10 +24,20 @@
         
         </tbody>
     </table>
-<p>
+        <div class="table" v-else>
+       
+           
+             <h3 class="text-center">  No result found</h3>
+        
+        </div>
+    
+
+
+   
+<h3 v-if="itemSort.length">
 <button @click="prevPage">Previous</button> 
 <button @click="nextPage">Next</button>
-</p>
+</h3>
     <div class="user-input">
         <input type="number" min="5" max="10" v-model="limit" @input="callApiInput">
         <label for="user-input">Number of cities to show</label>
