@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="container">
-    <div class="search-box">
+    <div class="search-box m-2">
         <input type="text" placeholder="Search" >
         <button  @click="callApi" type="submit">Search</button>
     </div>
@@ -28,7 +28,7 @@
 <button @click="nextPage">Next</button>
 </p>
     <div class="user-input">
-        <input type="number" min="5" max="10" v-model="limit">
+        <input type="number" min="5" max="10" v-model="limit" @input="callApi">
         <label for="user-input">Number of cities to show</label>
     </div>
    </div>

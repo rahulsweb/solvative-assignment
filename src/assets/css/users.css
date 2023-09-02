@@ -17,11 +17,8 @@
       font-size: 16px;
        background-color: rgb(255, 255, 255);
         border-color: rgb(206, 212, 218);
-         padding-top: 6px;
-                   padding-bottom: 6px;
-
-          padding-left: 12px;
-     padding-right: 6px;
+       padding:8px;
+    margin:8px;
       border-radius: 4px;
    }
   /* Table */
@@ -76,4 +73,12 @@
   /* Table responsive */
   .table-responsive {
     overflow-x: auto;
+  }
+
+  .p-2
+  {
+    padding:10px;
+  }
+  .m-2{
+    margin:10px;
   }
