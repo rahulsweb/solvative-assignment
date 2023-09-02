@@ -36,15 +36,17 @@
 
             </div>
 
-            <h3 v-if="itemSort.length">
-                <button @click="prevPage">Previous</button>
-                <button @click="nextPage">Next</button>
-            </h3>
-            <div class="user-input">
-                <input type="number" min="5" max="10" v-model="limit" @input="callApiInput">
-                <label for="user-input">Number of cities to show</label>
+            <div v-if="itemSort.length">
+                <button class="m-2 " @click="prevPage">Previous</button>
+                <button class="m-2 " @click="nextPage">Next</button>
             </div>
-            <div v-if="limit < 5 || limit > 10 " class="error mt-2">Enter the number between 5 to 10 </div>
+            <div class="user-input m-2">
+                <label for="number">Number of cities to show
+                                    <input  id="number" type="number" min="5" max="10" v-model="limit" @input="callApiInput">
+
+                </label>
+            </div>
+            <div v-if="limit < 1 || limit > 10 " class="error mt-2">Enter the number between 1 to 10 </div>
 
         </div>
 
@@ -94,6 +96,7 @@ export default {
 
     mounted() {
         this.callApi();
+          this.pageSize=this.limit;
     },
 
     methods: {
@@ -125,7 +128,7 @@ export default {
         },
         async callApiInput() {
 
-            if (this.limit >= 5 && this.limit <= 10) {
+            if (this.limit >= 1 && this.limit <= 10) {
                 this.show = true;
                 await this.callApi();
             }
