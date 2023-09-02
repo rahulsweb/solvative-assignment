@@ -4,10 +4,15 @@
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
 }
+.error{
+    border: 1px solid;
+    margin: 10px 0px;
+    padding: 15px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+}
 .container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    margin: 8px auto;
     padding: 1rem;
     background-color: #fff;
   }
@@ -21,6 +26,11 @@
     margin:8px;
       border-radius: 4px;
    }
+   .error{
+    color: #D8000C;
+    background-color: #FFBABA;
+    background-image: url('https://i.imgur.com/GnyDvKN.png');
+}
   /* Table */
 .table {
     width: 100%;
@@ -56,7 +66,7 @@
   .table-bordered > tbody > tr > th,
   .table-bordered > thead > tr > td,
   .table-bordered > tbody > tr > td {
-    border: 1px solid #dee2e6;
+    border: 1px solid rgb(222, 226, 230);
   }
   
   /* Table dark */
@@ -67,7 +77,8 @@
   
   .table-dark th,
   .table-dark td {
-    border-color: #343a40;
+    font-weight: 700;
+    border-color: rgb(222, 226, 230);
   }
   
   /* Table responsive */
@@ -87,8 +98,31 @@
     box-shadow: 0 0 0 3px rgb(121 82 179 / 25%);
   }
   #search{
-    width: 30%;
+    width: 40%;
   }
   .text-center{
     text-align:center !important;
   }
+
+
+
+  @media only screen and (min-width: 300px) and (max-width: 768px)  {
+    #search{
+        width: 80%;
+      }
+  }
+  .custom-loader {
+ 
+    width:100px;
+    height:100px;
+    border-radius:50%;
+   
+    position:absolute;
+    left:47%;
+    top:47%;
+    background:conic-gradient(#0000 10%,#766DF4);
+    -webkit-mask:radial-gradient(farthest-side,#0000 calc(50%),#000 50);
+    animation:s3 1s infinite linear;
+    
+  }
+  @keyframes s3 {to{transform: rotate(1turn)}}
