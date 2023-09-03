@@ -13,47 +13,48 @@
                 <input id="search" type="text" :placeholder="'Start searching...'" v-model="searchQuery">
                 <!-- <button @click="callApiSearch" type="submit">Search</button> -->
             </div>
-            <table class="table" v-if="itemSort.length">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Place Name</th>
-                        <th>Country</th>
-                    </tr>
-                </thead>
+            <div v-if="itemSort.length">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Place Name</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
 
-                <tbody>
-                    <tr v-for=" (item,index) in  itemSort" :key="index">
-                        <td>{{index+1}}</td>
-                        <td>{{item.city}}</td>
+                    <tbody>
+                        <tr v-for=" (item,index) in  itemSort" :key="index">
+                            <td>{{index+1}}</td>
+                            <td>{{item.city}}</td>
 
-                        <td class="flex">{{item.country}}<img :src="`https://flagsapi.com/${item.countryCode}/shiny/64.png`" width="20" class="ml-2">
+                            <td class="flex">{{item.country}}<img :src="`https://flagsapi.com/${item.countryCode}/shiny/64.png`" width="20" class="ml-2">
 
-</td>
+                            </td>
 
-                    </tr>
+                        </tr>
 
-                </tbody>
-            </table>
-            <div class="table w-100" v-else>
+                    </tbody>
+                </table>
+                <div class="w-100">
+                    <button class="m-2 " @click="prevPage">Previous</button>
+                    <button class="m-2 " @click="nextPage">Next</button>
 
-                <h3 class="text-center"> No result found</h3>
-
-            </div>
-
-            <div class="w-100" v-if="itemSort.length">
-                <button class="m-2 " @click="prevPage">Previous</button>
-                <button class="m-2 " @click="nextPage">Next</button>
-            
-              
-            </div>
-            <div class="w-100 mt-2">
-                  <label for="number">Number of cities to show
-                    <input id="number" type="number" min="1" max="10" v-model="limit" @input="callApiInput">
-
-                </label>
                 </div>
-            <div v-if="limit < 1 || limit > 10 " class="error mt-2">Enter the number between 1 to 10 </div>
+                <div class="w-100 mt-2">
+                    <label for="number">Number of cities to show
+                        <input id="number" type="number" min="1" max="10" v-model="limit" @input="callApiInput">
+
+                    </label>
+                </div>
+                <div v-if="limit < 1 || limit > 10 " class="error mt-2">Enter the number between 1 to 10 </div>
+            </div>
+
+            <div class="list-not-found " v-else>
+
+                <h1 class=""> No result found</h1>
+
+            </div>
 
         </div>
 
@@ -167,6 +168,4 @@ export default {
 
 <style>
 @import '@/assets/css/users.css';
-
-
 </style>
