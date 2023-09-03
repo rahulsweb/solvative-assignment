@@ -9,9 +9,9 @@
         <div v-if="show" class="custom-loader">
         </div>
         <div v-else>
-            <div class="search-box ">
+            <div class="search-box w-100">
                 <input id="search" type="text" :placeholder="'Start searching...'" v-model="searchQuery">
-                <button @click="callApiSearch" type="submit">Search</button>
+                <!-- <button @click="callApiSearch" type="submit">Search</button> -->
             </div>
             <table class="table" v-if="itemSort.length">
                 <thead>
@@ -35,21 +35,24 @@
 
                 </tbody>
             </table>
-            <div class="table" v-else>
+            <div class="table w-100" v-else>
 
                 <h3 class="text-center"> No result found</h3>
 
             </div>
 
-            <div class="float-left"  v-if="itemSort.length">
+            <div class="w-100" v-if="itemSort.length">
                 <button class="m-2 " @click="prevPage">Previous</button>
                 <button class="m-2 " @click="nextPage">Next</button>
             
-                <label for="number">Number of cities to show
+              
+            </div>
+            <div class="w-100 mt-2">
+                  <label for="number">Number of cities to show
                     <input id="number" type="number" min="1" max="10" v-model="limit" @input="callApiInput">
 
                 </label>
-            </div>
+                </div>
             <div v-if="limit < 1 || limit > 10 " class="error mt-2">Enter the number between 1 to 10 </div>
 
         </div>
@@ -164,10 +167,6 @@ export default {
 
 <style>
 @import '@/assets/css/users.css';
-.search-box {
-    float:left;
-    margin-left:30px;
-    margin-bottom:10px;
-}
+
 
 </style>

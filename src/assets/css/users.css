@@ -16,14 +16,16 @@
     
 }
 .container {
-    max-width: 550px;
-    margin: 8px ;
+    margin: 10px;
     padding: 1rem;
     background-color: #fff;
   }
+
 #search-box{
-    width: auto;
-     height: 38px;
+    margin-bottom:10px;
+    display: block;
+    /* width: 100%; */
+     /* height: 38px; */
       font-size: 16px;
        background-color: rgb(255, 255, 255);
         /* border-color: rgb(206, 212, 218);
@@ -38,8 +40,8 @@
 }
   /* Table */
 .table {
-    width:70%;
-    margin:30px ;
+    width:100%;
+  
     border-collapse: collapse;
     border-spacing: 0;
     margin-bottom: 1rem;
@@ -108,12 +110,27 @@
   .ml-2{
     margin-left:10px;
   }
+  .mt-2{
+    margin-top:10px;
+  }
   input:active, input:hover{
     border-color: #7952b3;
     box-shadow: 0 0 0 3px rgb(121 82 179 / 25%);
   }
   #search{
-    width:auto;
+    margin-bottom:10px;
+    float:left;
+    width: 241px;
+     height: 38px;
+      font-size: 16px;
+       background-color: rgb(255, 255, 255);
+        border-color: rgb(206, 212, 218);
+         padding-bottom: 6px;
+         padding-top: 6px;
+          padding-left: 12px;
+           padding-right:12px;
+           border-radius: 4px;
+
   
   }
   .text-center{
@@ -124,9 +141,17 @@
 
   @media only screen and (min-width: 300px) and (max-width: 768px)  {
     #search{
-        width:auto;
-      
-        margin-bottom:5px;
+        margin-bottom:10px;
+        width: 241px;
+        height: 38px;
+         font-size: 16px;
+          background-color: rgb(255, 255, 255);
+           border-color: rgb(206, 212, 218);
+            padding-bottom: 6px;
+            padding-top: 6px;
+             padding-left: 12px;
+              padding-right:12px;
+              border-radius: 4px;
       }
       .custom-loader {
  
@@ -142,6 +167,10 @@
         animation:s3 1s infinite linear;
         
       }
+      /* .float-left{
+        float: left;
+        width: 100%;
+      } */
   }
   .custom-loader {
  
@@ -160,8 +189,10 @@
   @keyframes s3 {to{transform: rotate(1turn)}}
 
 
-
-  .float-left{
+ .w-100{
+    width:100%;
+ }
+  /* .float-left{
     float: left;
     margin:30px;
-  }
+  } */
