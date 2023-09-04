@@ -25,7 +25,7 @@
 
                     <tbody>
                         <tr v-for=" (item,index) in  itemSort" :key="index">
-                            <td>{{index+1}}</td>
+                            <td>{{res.findIndex(x => x.id ===item.id)+1}}</td>
                             <td>{{item.city}}</td>
 
                             <td class="flex">{{item.country}}<img :src="`https://flagsapi.com/${item.countryCode}/shiny/64.png`" width="20" class="ml-2">
@@ -43,7 +43,7 @@
                 </div>
                 <div class="w-100 mt-2">
                     <label for="number">Number of cities to show
-                        <input id="number" type="number" min="1" max="10" v-model="limit" @input="callApiInput">
+                        <input id="number" type="number" min="1" max="10" v-model="limit" @keyup.enter="callApiInput">
 
                     </label>
                 </div>
